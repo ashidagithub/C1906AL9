@@ -47,4 +47,5 @@ with open(out_path, "r", encoding='utf8') as csvfile:
     row_cnt = 0
     for line in reader:
         row_cnt += 1
-        print('第 %d 行， 第一列是 %s, 第二列是 %s' % (row_cnt,line[1],line[2]))
+        print('第 %d 行， 行号是 %d, 第一列是 %s, 第二列是 %s' %
+              (row_cnt, line[0], line[1], line[2]))
