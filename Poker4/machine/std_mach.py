@@ -51,10 +51,9 @@ def create_deck_52(new_deck):
     cardNumbers = ('2', '3', '4', '5', '6', '7', '8',
                    '9', '10', 'J', 'Q', 'K', 'A')
     # add 4x13 cards
-    for cn in cardNumbers:
-        for cm in cardMarks:
-            #card = cm + cn
-            card = cn + cm
+    for cm in cardMarks:
+        for cn in cardNumbers:
+            card = cm + cn
             new_deck.append(card)
 
     return
@@ -119,10 +118,23 @@ def record_deck_csv(deck_to_be_record, csv_filename):
     '用CSV格式记录一副牌'
     print('\n -- debug: I record a deck')
 
-    out_path = os.getcwd() + '\\out_decks_csv\\' + csv_filename
+    out_path = os.getcwd() + '\\csv_decks\\' + csv_filename
 
     with open(out_path, "w", encoding='utf-8', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(deck_to_be_record)
 
+    return
+
+
+def read_deck_csv(csv_filename, out_deck):
+    '读取 CSV 格式的牌，并把它读取到一个列表中去'
+
+    #out_deck =[]
+
+    in_path = os.getcwd() + '\\csv_decks\\' + csv_filename
+    with open(in_path, "r", encoding='utf8') as csvfile:
+        reader = csv.reader(csvfile)
+        for line in reader:
+            out_deck.extend(line)
     return

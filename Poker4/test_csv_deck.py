@@ -18,3 +18,11 @@ record_deck_csv(deck, '52张扑克牌.csv')
 deck = []
 create_deck_54(deck)
 record_deck_csv(deck, '54张扑克牌.csv')
+
+deck = []
+read_deck_csv('52张扑克牌.csv', deck)
+print('--debug 52 deck: \n%s' % (deck))
+
+deck = []
+read_deck_csv('54张扑克牌.csv', deck)
+print('--debug 54 deck: \n%s' % (deck))
