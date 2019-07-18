@@ -12,31 +12,32 @@
 import logging
 import os
 
-# Phase 2： Poker 用法
+from machine.std_mach import *
 
 # 定义了 logger 的名字
 global app_name
-app_name = 'main2'
+app_name = 'test_log'
 logger = logging.getLogger(app_name)
 
-# 按  时间-文件名-模块名-函数名-行号-信息输出
+# 定义了 logger 的输出形式
 log_path = os.getcwd() + '\\log_files\\' + app_name + '.log'
 logging.basicConfig(level=logging.DEBUG,
                     filename=log_path,
                     format='%(asctime)s - %(levelname)s : %(name)s - %(filename)s -%(funcName)s() -No.%(lineno)d - %(message)s')
 
+# 调用其他模块，测试 log 是否正常工作
+deck = []
+create_deck_52(deck)
+record_deck_csv(deck, '52张扑克牌.csv')
 
-msg = '这是一条只有调试时才输出的日志'
-logger.debug(msg)
+deck = []
+create_deck_54(deck)
+record_deck_csv(deck, '54张扑克牌.csv')
 
-msg = '证明事情按预期工作，可以输出也可以不输出'
-logger.info(msg)
+deck = []
+read_deck_csv('52张扑克牌.csv', deck)
+print('--debug 52 deck: \n%s' % (deck))
 
-msg = '现在没问题，但将来可能会出现问题...'
-logger.warning(msg)
-
-msg = '严重的问题，部分功能已不能执行'
-logger.error(msg)
-
-msg = '致命性问题，程序崩溃'
-logger.critical(msg)
+deck = []
+read_deck_csv('54张扑克牌.csv', deck)
+print('--debug 54 deck: \n%s' % (deck))

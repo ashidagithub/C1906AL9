@@ -12,12 +12,17 @@
 import random
 import codecs
 import os
-import csv
 
+# Poker 4.0 added
+import csv
+import logging
+
+global app_name
+app_name = 'test_log'
+logger = logging.getLogger(app_name)
 
 def create_deck_54(new_deck):
     '推出一副54张的新牌'
-    print('\n -- debug: I made a new deck of 54.')
 
     # initialize var
     cardJokers = ('♞', '♘')
@@ -35,35 +40,41 @@ def create_deck_54(new_deck):
             card = cn + cm
             new_deck.append(card)
 
+    # Poker 4.0 added
+    msg = '推出了一副54张的新扑克牌'
+    logger.info(msg)
+
     return
 
 
 def create_deck_52(new_deck):
     '推出一副52张的新牌'
-    print('\n -- debug: I made a new deck of 52.')
-
-    # initialize var
-    #cardJokers = ('♞', '♘')
-    # for c in cardJokers:
-    #    new_deck.append(c)
 
     cardMarks = ('♠', '♥', '♣', '♦')
     cardNumbers = ('2', '3', '4', '5', '6', '7', '8',
                    '9', '10', 'J', 'Q', 'K', 'A')
+
     # add 4x13 cards
     for cm in cardMarks:
         for cn in cardNumbers:
             card = cm + cn
             new_deck.append(card)
 
+    # Poker 4.0 added
+    msg = '推出了一副52张的新扑克牌'
+    logger.info(msg)
+
     return
 
 
 def shuffled_deck(deck_to_be_shuffled):
     '洗牌'
-    print('\n -- debug: I shuffled a deck')
 
     random.shuffle(deck_to_be_shuffled)
+    # Poker 4.0 added
+    msg = '洗了下牌'
+    logger.info(msg)
+
     return
 
 
@@ -84,6 +95,8 @@ def record_deck(deck_to_be_record, filename):
 '''
 
 # ---- Poker 3.0 added
+
+
 def make_deck_by_type(play_type, out_deck):
     '按要求制作各种扑克牌'
     if play_type == 1:  # 争上游的牌
@@ -114,15 +127,20 @@ def make_deck_by_type(play_type, out_deck):
     return
 
 # ---- Poker 4.0 added
+
+
 def record_deck_csv(deck_to_be_record, csv_filename):
     '用CSV格式记录一副牌'
-    print('\n -- debug: I record a deck')
 
     out_path = os.getcwd() + '\\csv_decks\\' + csv_filename
 
     with open(out_path, "w", encoding='utf-8', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(deck_to_be_record)
+
+    # Poker 4.0 added
+    msg = '把牌的内容记录到了文件 (%s)' % out_path
+    logger.debug(msg)
 
     return
 
@@ -137,4 +155,9 @@ def read_deck_csv(csv_filename, out_deck):
         reader = csv.reader(csvfile)
         for line in reader:
             out_deck.extend(line)
+
+    # Poker 4.0 added
+    msg = '从文件 (%s) 中读取了牌的内容' % in_path
+    logger.debug(msg)
+
     return
