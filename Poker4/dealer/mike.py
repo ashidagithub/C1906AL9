@@ -10,7 +10,6 @@
 
 import random
 
-
 def deal_to_a_player(aDeck, num, player_cards):
     'Desc: Deal some cards to a player from a deck'
 

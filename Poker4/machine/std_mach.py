@@ -99,6 +99,8 @@ def record_deck(deck_to_be_record, filename):
 
 def make_deck_by_type(play_type, out_deck):
     '按要求制作各种扑克牌'
+
+    '''
     if play_type == 1:  # 争上游的牌
         create_deck_54(out_deck)
         shuffled_deck(out_deck)
@@ -123,6 +125,36 @@ def make_deck_by_type(play_type, out_deck):
         # shuffled & record
         shuffled_deck(out_deck)
         record_deck(out_deck, '四人斗地主-刚洗好的牌.txt')
+    '''
+
+    # ---- Poker 4.0 added
+    if play_type == 1:  # 争上游的牌
+        create_deck_54(out_deck)
+        shuffled_deck(out_deck)
+        record_deck_csv(out_deck, '争上游-刚洗好的牌.csv')
+    elif play_type == 2:  # 桥牌
+        create_deck_52(out_deck)
+        shuffled_deck(out_deck)
+        record_deck_csv(out_deck, '桥牌-刚洗好的牌.csv')
+    elif play_type == 3:  # 三人斗地主的牌
+        create_deck_54(out_deck)
+        shuffled_deck(out_deck)
+        record_deck_csv(out_deck, '三人斗地主-刚洗好的牌.csv')
+    elif play_type == 4:  # 四人斗地主的牌
+        # first deck
+        deck_a = []
+        create_deck_54(deck_a)
+        out_deck.extend(deck_a)
+        # second deck
+        deck_b = []
+        create_deck_54(deck_b)
+        out_deck.extend(deck_b)
+        # shuffled & record
+        shuffled_deck(out_deck)
+        record_deck_csv(out_deck, '四人斗地主-刚洗好的牌.csv')
+    else:
+        msg = '无法识别的游戏类型 (%d)' % (play_type)
+        logger.error(msg)
 
     return
 
@@ -147,8 +179,6 @@ def record_deck_csv(deck_to_be_record, csv_filename):
 
 def read_deck_csv(csv_filename, out_deck):
     '读取 CSV 格式的牌，并把它读取到一个列表中去'
-
-    #out_deck =[]
 
     in_path = os.getcwd() + '\\csv_decks\\' + csv_filename
     with open(in_path, "r", encoding='utf8') as csvfile:

@@ -41,3 +41,6 @@ print('--debug 52 deck: \n%s' % (deck))
 deck = []
 read_deck_csv('54张扑克牌.csv', deck)
 print('--debug 54 deck: \n%s' % (deck))
+
+deck = []
+make_deck_by_type(4,deck)
