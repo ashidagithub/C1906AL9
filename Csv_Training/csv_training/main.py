@@ -24,13 +24,13 @@ logging.basicConfig(level=logging.DEBUG,
 
 # Global: Define file name & path
 filename = 'test_write.csv'
-out_path = os.getcwd() + '\\csv_files\\' + filename
+csv_path = os.getcwd() + '\\csv_files\\' + filename
 
 # Practice 1  - write
 # write a row once
 header_data = ["行号", "列名1", "列名2"]
 row_data = [1, '第1列数据', '第2列数据']  # data of a row
-with open(out_path, "w", encoding='utf8', newline='') as csvfile:
+with open(csv_path, "w", encoding='utf8', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(header_data)
     writer.writerow(row_data)
@@ -40,7 +40,7 @@ logger.debug(msg)
 # write serval rows by for
 header_data = ["行号", "列名1", "列名2"]
 repeat_times = 10
-with open(out_path, "w", encoding='utf8', newline='') as csvfile:
+with open(csv_path, "w", encoding='utf8', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(header_data)
     for cnt in range(repeat_times):
@@ -50,7 +50,7 @@ msg = '输出了 %d 行 CSV 数据' % (repeat_times)
 logger.info(msg)
 
 # Practice 2 - read
-with open(out_path, "r", encoding='utf8') as csvfile:
+with open(csv_path, "r", encoding='utf8') as csvfile:
     reader = csv.reader(csvfile)
     cnt = 0
     for line in reader:
@@ -60,7 +60,7 @@ msg = '读取了 %d 行 CSV 数据' % (cnt)
 logger.info(msg)
 
 # Practice 3 - get filed(cell)
-with open(out_path, "r", encoding='utf8') as csvfile:
+with open(csv_path, "r", encoding='utf8') as csvfile:
     reader = csv.reader(csvfile)
     row_cnt = 0
     for line in reader:
