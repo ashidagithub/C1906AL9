@@ -94,7 +94,7 @@ def record_deck(deck_to_be_record, filename):
     return
 '''
 
-# ---- Poker 3.0 added
+# ---- Poker 3.0 added and Poker 4 updated
 
 
 def make_deck_by_type(play_type, out_deck):
