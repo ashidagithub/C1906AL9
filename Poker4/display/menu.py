@@ -52,6 +52,7 @@ def dsp_choice_game():
     game_type = int(input())
     return game_type
 
+
 def dsp_show_deck(game_type):
     '显示菜单：挑选要查看的牌'
 
@@ -60,12 +61,35 @@ def dsp_show_deck(game_type):
     print('1 - 我挑选第一副牌')
     print('2 - 我挑选第二副牌')
     print('3 - 我挑选第三副牌')
-    if game_type == 2 or game_type==4:
+    if game_type == 2 or game_type == 4:
         print('4 - 我挑选第四副牌')
-    if game_type == 3 or game_type ==4:
+    if game_type == 3 or game_type == 4:
         print('9 - 我查看预留的底牌')
     print('其他 - 退出')
     print('**********************************')
     print('请输入我的选择 (1-4或9)：', end='')
     deck_no = int(input())
     return deck_no
+
+
+def show_deck_para(deck):
+    '用并排的方式显示一副扑克牌（假设扑克牌已经排好序）'
+
+    # clear_menu()
+
+    print('**********************************')
+    print('***       我挑的牌如下         ***')
+    pre_card = ''
+    cur_card = ''
+    for card in deck:
+        cur_card = card[:-1]
+        if cur_card != pre_card:
+            print('\n%s ' % (card), end='')
+        else:
+            print('%s ' % (card), end='')
+        pre_card = cur_card
+
+    print('\n\n**********************************')
+    print('*****        总计 %d 张牌      ***' % (len(deck)))
+
+    return

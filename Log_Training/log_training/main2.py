@@ -16,7 +16,7 @@ import os
 
 # 定义了 logger 的名字
 global app_name
-app_name = 'main2'
+app_name = 'hahaha'
 logger = logging.getLogger(app_name)
 
 # 按  时间-文件名-模块名-函数名-行号-信息输出

@@ -21,6 +21,7 @@ global app_name
 app_name = 'test_log'
 logger = logging.getLogger(app_name)
 
+
 def create_deck_54(new_deck):
     '推出一副54张的新牌'
 
@@ -77,14 +78,13 @@ def shuffled_deck(deck_to_be_shuffled):
 
     return
 
-
 '''
 def record_deck(deck_to_be_record, filename):
     '记录一副牌'
     print('\n -- debug: I record a deck')
 
     out_path = os.getcwd() + '\\OutputDecks\\' + filename
-    #print(out_path)
+    # print(out_path)
     f = codecs.open(out_path, "w", "utf-8")
     for card in deck_to_be_record:
         f.write(card)
@@ -164,14 +164,14 @@ def make_deck_by_type(play_type, out_deck):
 def record_deck_csv(deck_to_be_record, csv_filename):
     '用CSV格式记录一副牌'
 
-    out_path = os.getcwd() + '\\csv_decks\\' + csv_filename
+    csv_path = os.getcwd() + '\\csv_decks\\' + csv_filename
 
-    with open(out_path, "w", encoding='utf-8', newline='') as csvfile:
+    with open(csv_path, "w", encoding='utf-8', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(deck_to_be_record)
 
     # Poker 4.0 added
-    msg = '把牌的内容记录到了文件 (%s)' % out_path
+    msg = '把牌的内容记录到了文件 (%s)' % csv_path
     logger.debug(msg)
 
     return

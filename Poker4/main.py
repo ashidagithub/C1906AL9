@@ -15,7 +15,7 @@ import logging
 
 # import our modules
 from display.menu import *
-from display.show import *
+#from display.show import *
 
 from machine.std_mach import *
 from dealer.mike import *
@@ -91,6 +91,7 @@ if game_type == 4:
 # Phase 5-----------------------------------------------------------------------
 # 查看指定的牌
 deck_no = dsp_show_deck(game_type)
+
 if deck_no == 0:
     dsp_end()
     exit()
