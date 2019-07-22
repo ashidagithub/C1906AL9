@@ -26,6 +26,7 @@ logging.basicConfig(level=logging.DEBUG,
 filename = 'test_write.csv'
 csv_path = os.getcwd() + '\\csv_files\\' + filename
 
+
 # Practice 1  - write
 # write a row once
 header_data = ["行号", "列名1", "列名2"]

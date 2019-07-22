@@ -95,7 +95,7 @@ deck_no = dsp_show_deck(game_type)
 if deck_no == 0:
     dsp_end()
     exit()
-elif (deck_no > -1 and deck_no <= 4) or deck_no == 9 :
+elif (deck_no > 0 and deck_no <= 4) or deck_no == 9 :
 
     # 读取文件内容至一个列表
     filename = 'no_such_a_file.csv'

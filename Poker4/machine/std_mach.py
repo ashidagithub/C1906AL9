@@ -176,7 +176,6 @@ def record_deck_csv(deck_to_be_record, csv_filename):
 
     return
 
-
 def read_deck_csv(csv_filename, out_deck):
     '读取 CSV 格式的牌，并把它读取到一个列表中去'
 
